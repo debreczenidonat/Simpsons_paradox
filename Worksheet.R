@@ -35,7 +35,7 @@ qplot(independent_variable2, dependent_variable) + labs(title="Second variable V
                                                         x="Second variable")
 
 # Let's include the third variable too:
-summary(lm(dependent_variable ~ independent_variable1 + independent_variable2 + independent_variable3))
+summary(lm(dependent_variable ~ independent_variable1 + independent_variable2 + independent_variable3)) 
 
 # Please note, that the first variable's estimate is significant, controlling the second and third variables! 
 
