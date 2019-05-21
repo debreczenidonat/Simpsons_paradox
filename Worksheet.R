@@ -1,4 +1,4 @@
-#In this worksheet, we will create and examine an example on how the effecs of different feaures may mask the correlation between other features and the target variable. 
+#In this worksheet, we will create and examine an example on how the effects of different features may mask the correlation between other features and the target variable. Later, we check some classic examples of the Simpson's paradox
 library(ggplot2)
 
 set.seed(42)
@@ -28,7 +28,7 @@ qplot(independent_variable1, dependent_variable) + labs(title="First variable Vs
 summary(lm(dependent_variable ~ independent_variable1 + independent_variable2))
 
 # According to the summary, the p-value for the second variable is minimal 
-# (which means that, if the null hypothesis holds (=second variable's coefficient is zero), the statistic calculated from data or any more extream case, has a low probability)
+# (which means, if the null hypothesis holds (=second variable's coefficient is zero), the statistic calculated from data or any more extreme case, has a low probability)
 # A quick look on a visualization is also convincing
 qplot(independent_variable2, dependent_variable) + labs(title="Second variable Vs Dependent variable", 
                                                         y="Dependent variable", 
@@ -37,13 +37,13 @@ qplot(independent_variable2, dependent_variable) + labs(title="Second variable V
 # Let's include the third variable too:
 summary(lm(dependent_variable ~ independent_variable1 + independent_variable2 + independent_variable3))
 
-# Please note, that the first variable's estimate is significant, when controlling the second and third variables! 
+# Please note, that the first variable's estimate is significant, controlling the second and third variables! 
 
 
 #################
 ### EXAMPLE 2 ###
 #################
-#Let's check a similar case as the first one, but with a categorical variable. So our dataset will have a categorical and a continious feature:
+#Let's check a similar case as the first one, but with a categorical variable. So our dataset will have a categorical and a continuous feature:
 set.seed(42)
 x1 <- rnorm(500, mean = 20, sd = 3)
 x2 <- rnorm(500, mean = 25, sd = 2)
@@ -62,14 +62,14 @@ summary(lm(Y ~ X, data = Simpsons_paradox_example))
 # We get an inconclusive result, yet again. 
 qplot(X,Y,data=Simpsons_paradox_example) + labs(title="X Vs Y", 
                                                 y="Dependent variable", 
-                                                x="Continiuos variable")
+                                                x="Continuous variable")
 # If we implement the categorical variable into the linear model, we get the desired result
 summary(lm(Y ~ X + C, data = Simpsons_paradox_example))
 
 # When we include variable C in the plot, the correlation gets more visible
 qplot(X,Y,data=Simpsons_paradox_example, colour = C) + stat_smooth(method = "lm", se = FALSE) + labs(title="X Vs Y", 
                                                 y="Dependent variable", 
-                                                x="Continiuos variable")
+                                                x="Continuous variable")
 
 #################
 ### EXAMPLE 3 ###
@@ -93,10 +93,10 @@ summary(lm(Y ~ X, data = Simpsons_paradox_example))
 # The summary suggest a positive correlation, a quick visualization shows us why:
 qplot(X,Y,data=Simpsons_paradox_example) + stat_smooth(method = "lm", se = FALSE) + labs(title="X Vs Y", 
                                                 y="Dependent variable", 
-                                                x="Continiuos variable")
+                                                x="Continuous variable")
 
 # So controlling for C, X will shows decrease in Y
 summary(lm(Y ~ X + C, data = Simpsons_paradox_example))
 qplot(X,Y,data=Simpsons_paradox_example, colour = C) + stat_smooth(method = "lm", se = FALSE) + labs(title="X Vs Y", 
                                                                                                      y="Dependent variable", 
-                                                                                                     x="Continiuos variable")
+                                                                                                     x="Continuous variable")
