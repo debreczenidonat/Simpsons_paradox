@@ -71,7 +71,7 @@ If we implement the categorical variable into the linear model, we get the desir
 ![Alt text](4.png?raw=true "")
 
 ## The third example
-We can generate a dataset that will actually show us a significant positive correlation for X and Y from the second example. But this will change when we control variable C. The coefficient for X, will be -1.5 for both categories in the dataset! Let's see a visuaization of the dataset:
+We can generate a dataset that will actually show us a significant positive correlation for X and Y from the second example. But this will change when we examine X controlling variable C. The coefficient for X, will be -1.5 for both categories in the dataset! Let's see a visualization:
 
 ![Alt text](5.png?raw=true "")
 
@@ -83,11 +83,16 @@ Now if we run a linear model, using only X:
 
     X             1.7543     0.0223   78.68   <2e-16 ***
     
-Please note, that the model suggest a small p-value for a positive coefficient! If we consider the categorical variable C, we get the true coefficient, used while generating the dataset.
-
-![Alt text](6.png?raw=true "")
+Please note, that the model suggest a small p-value for a positive coefficient! If we consider the categorical variable C, we get the coefficient we used while generating the dataset.
 
             Estimate       Std. Error t value Pr(>|t|)    
+            
     (Intercept) 98.87245    1.74913   56.53   <2e-16 ***
+    
     X           -1.45795    0.08647  -16.86   <2e-16 ***
+    
     CB          99.24250    2.63468   37.67   <2e-16 ***
+    
+Let's observe the visualization:
+
+![Alt text](6.png?raw=true "")
