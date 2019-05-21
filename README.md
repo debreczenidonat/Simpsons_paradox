@@ -7,7 +7,7 @@ In the first example 3 independent variables are created. The dependent variable
 
 Let's assume we only received the first feature for the analysis. Let's fit a linear model, and browse the summary:
 
-                      Estimate Std. Error t value Pr(>|t|)   
+                      Estimate       Std. Error t value Pr(>|t|)   
                       
     (Intercept)           899.3649    92.4218   9.731   <2e-16 ***
 
@@ -19,7 +19,7 @@ As you can see, the model was inconclusive regarding the coefficient. A quick vi
 
 However, this doesn't mean, there is no correlation... we generated this data with a coeff of 2! The problem is, the second and third independent features has greater effect on the dependent variable. Let's build a linear model with the first and second independent variable:
 
-                      Estimate Std. Error t value Pr(>|t|)    
+                      Estimate       Std. Error t value Pr(>|t|)    
                       
     (Intercept)           916.7314    76.9787  11.909   <2e-16 ***
 
@@ -33,7 +33,7 @@ According to the summary, the p-value for the second variable is minimal (which 
 
 If we include the third variable too, we get the following summary:
 
-                       Estimate Std. Error t value Pr(>|t|)    
+                       Estimate      Std. Error t value Pr(>|t|)    
                        
     (Intercept)           20.092752   0.564395    35.6   <2e-16 ***
 
@@ -48,7 +48,7 @@ As you can see, controlling the second and third variables, we can now predict p
 ## The second example
 Let's check a similar case as the first one, but with a categorical variable. So our dataset will have a categorical (C) and a continuous feature (X), and a continuous target/dependent variable (Y). Now, let's run a linear model, using only X:
 
-            Estimate Std. Error t value Pr(>|t|)   
+            Estimate       Std. Error t value Pr(>|t|)   
             
     (Intercept) 74.26749    1.72193  43.130   <2e-16 ***
 
@@ -60,7 +60,7 @@ Yet again, we get an inconclusive result.
 
 If we implement the categorical variable into the linear model, we get the desired result
 
-            Estimate Std. Error t value Pr(>|t|)    
+            Estimate       Std. Error t value Pr(>|t|)    
             
     (Intercept) 98.87245    1.74913   56.53   <2e-16 ***
 
@@ -73,11 +73,11 @@ If we implement the categorical variable into the linear model, we get the desir
 ## The third example
 We can generate a dataset that will actually show us a significant positive correlation for X and Y from the second example. But this will change when we control variable C. The coefficient for X, will be -1.5 for both categories in the dataset! Let's see a visuaization of the dataset:
 
-![Alt text](4.png?raw=true "")
+![Alt text](5.png?raw=true "")
 
 Now if we run a linear model, using only X:
 
-            Estimate Std. Error t value Pr(>|t|)   
+            Estimate        Std. Error t value Pr(>|t|)   
             
     (Intercept)  36.2809     0.8498   42.70   <2e-16 ***
 
@@ -85,9 +85,9 @@ Now if we run a linear model, using only X:
     
 Please note, that the model suggest a small p-value for a positive coefficient! If we consider the categorical variable C, we get the true coefficient, used while generating the dataset.
 
-![Alt text](5.png?raw=true "")
+![Alt text](6.png?raw=true "")
 
-            Estimate Std. Error t value Pr(>|t|)    
+            Estimate       Std. Error t value Pr(>|t|)    
     (Intercept) 98.87245    1.74913   56.53   <2e-16 ***
     X           -1.45795    0.08647  -16.86   <2e-16 ***
     CB          99.24250    2.63468   37.67   <2e-16 ***
