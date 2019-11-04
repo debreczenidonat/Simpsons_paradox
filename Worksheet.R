@@ -100,3 +100,4 @@ summary(lm(Y ~ X + C, data = Simpsons_paradox_example))
 qplot(X,Y,data=Simpsons_paradox_example, colour = C) + stat_smooth(method = "lm", se = FALSE) + labs(title="X Vs Y", 
                                                                                                      y="Dependent variable", 
                                                                                                      x="Continuous variable")
+#
